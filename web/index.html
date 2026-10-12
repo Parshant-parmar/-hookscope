@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HookScope — inspect webhooks locally</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <main class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+      <header class="mb-10 flex items-center justify-between">
+        <div><p class="text-sm font-semibold uppercase tracking-[.2em] text-cyan-400">HookScope</p><h1 class="mt-2 text-3xl font-bold">Catch every webhook.</h1></div>
+        <button id="create-endpoint" class="rounded-lg bg-cyan-400 px-4 py-2 font-semibold text-slate-950 hover:bg-cyan-300">Create endpoint</button>
+      </header>
+      <section id="empty-state" class="rounded-2xl border border-slate-800 bg-slate-900/70 p-8 text-slate-300">Create a private capture endpoint to start inspecting incoming requests.</section>
+      <section id="endpoint-panel" class="hidden space-y-6">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+          <p class="text-sm text-slate-400">Public capture URL</p>
+          <div class="mt-2 flex gap-2"><code id="capture-url" class="min-w-0 flex-1 overflow-x-auto rounded bg-slate-950 p-3 text-cyan-300"></code><button data-copy="capture-url" class="rounded bg-slate-700 px-3 text-sm hover:bg-slate-600">Copy</button></div>
+          <div id="token-callout" class="mt-5 rounded-lg border border-amber-400/40 bg-amber-400/10 p-4"><p class="text-sm text-amber-200">Private viewing token — shown only now. Save it to inspect this endpoint later.</p><div class="mt-2 flex gap-2"><code id="viewing-token" class="min-w-0 flex-1 overflow-x-auto rounded bg-slate-950 p-3 text-amber-100"></code><button data-copy="viewing-token" class="rounded bg-amber-300 px-3 text-sm font-semibold text-slate-950 hover:bg-amber-200">Copy</button></div></div>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-[22rem_1fr]">
+          <section class="rounded-2xl border border-slate-800 bg-slate-900/70"><div class="border-b border-slate-800 p-4"><h2 class="font-semibold">Captured requests</h2><p class="mt-1 text-xs text-slate-400">Refreshing every 3 seconds</p></div><div id="request-list" class="divide-y divide-slate-800"><p class="p-4 text-sm text-slate-400">No requests yet.</p></div></section>
+          <section class="rounded-2xl border border-slate-800 bg-slate-900/70 p-6"><h2 class="font-semibold">Request inspector</h2><div id="detail" class="mt-5 text-sm text-slate-400">Select a captured request.</div></section>
+        </div>
+      </section>
+    </main>
+    <script src="/shared/signature.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
